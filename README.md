@@ -1,6 +1,10 @@
 ## About
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![Go Report Card](https://goreportcard.com/badge/github.com/huantt/plaintext-extractor)](https://goreportcard.com/report/github.com/huantt/plaintext-extractor)
+
 `AAC` a.k.a. `Article as Code` helps you collect articles from data sources, such as dev.to, and then stores them as static files. 
- It also helps you sync static files to create articles on your publications.
+ 
+It also helps you sync static files to create articles on your publications.
 
 ## Install
 ```shell
