@@ -60,7 +60,7 @@ func (s *Service) fillBody(ctx context.Context, article *forem.Article) error {
 		return err
 	}
 	if fullArticle == nil {
-		slog.Debug("Article not found: %d", article.Id)
+		slog.Debug(fmt.Sprintf("Article not found: %d", article.Id))
 		return nil
 	}
 	article.BodyMarkdown = fullArticle.BodyMarkdown
