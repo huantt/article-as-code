@@ -2,7 +2,7 @@ package collector
 
 import (
 	"context"
-	"github.com/huantt/acc/src/model"
+	"github.com/huantt/acc/model"
 )
 
 type ArticleService interface {

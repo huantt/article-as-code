@@ -6,7 +6,7 @@ import (
 	"errors"
 	"fmt"
 	"github.com/gosimple/slug"
-	"github.com/huantt/acc/src/model"
+	"github.com/huantt/acc/model"
 	"log/slog"
 	"os"
 	"strings"

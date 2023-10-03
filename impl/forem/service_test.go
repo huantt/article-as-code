@@ -3,7 +3,7 @@ package forem
 import (
 	_ "embed"
 	"encoding/json"
-	"github.com/huantt/acc/src/pkg/forem"
+	"github.com/huantt/acc/pkg/forem"
 	"github.com/stretchr/testify/assert"
 	"testing"
 )

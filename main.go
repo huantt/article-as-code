@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/huantt/acc/src/cmd"
+	cmd2 "github.com/huantt/acc/cmd"
 	"github.com/spf13/cobra"
 	"log/slog"
 	"os"
@@ -22,8 +22,8 @@ func main() {
 	slog.SetDefault(logger)
 
 	root := &cobra.Command{}
-	root.AddCommand(cmd.CollectArticles("collect-articles"))
-	root.AddCommand(cmd.SyncArticles("sync-articles"))
+	root.AddCommand(cmd2.CollectArticles("collect-articles"))
+	root.AddCommand(cmd2.SyncArticles("sync-articles"))
 	err := root.Execute()
 	if err != nil {
 		slog.Error(err.Error())

@@ -2,7 +2,7 @@ package hashnode
 
 import (
 	"context"
-	"github.com/huantt/acc/src/model"
+	"github.com/huantt/acc/model"
 	"github.com/stretchr/testify/assert"
 	"os"
 	"testing"

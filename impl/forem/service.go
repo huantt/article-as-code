@@ -5,32 +5,32 @@ import (
 	"errors"
 	"fmt"
 	"github.com/gosimple/slug"
-	"github.com/huantt/acc/src/model"
-	forem2 "github.com/huantt/acc/src/pkg/forem"
+	"github.com/huantt/acc/model"
+	"github.com/huantt/acc/pkg/forem"
 	"log/slog"
 	"strings"
 	"sync"
 )
 
 type Service struct {
-	foremService *forem2.Service
+	foremService *forem.Service
 	uniqueSlugs  map[string]bool
 	username     *string
 }
 
 func NewService(APIEndpoint string, maxRps int) *Service {
-	return &Service{foremService: forem2.NewService(APIEndpoint, maxRps)}
+	return &Service{foremService: forem.NewService(APIEndpoint, maxRps)}
 }
 
 func NewAuthenticatedService(APIEndpoint string, maxRps int, username string, authToken string) *Service {
 	return &Service{
-		foremService: forem2.NewAuthenticatedService(APIEndpoint, maxRps, authToken),
+		foremService: forem.NewAuthenticatedService(APIEndpoint, maxRps, authToken),
 		username:     &username,
 	}
 }
 
 func (s *Service) GetArticles(ctx context.Context, username string, page, perPage int) ([]model.Article, error) {
-	articles, err := s.foremService.GetArticles(ctx, forem2.GetArticlesPrams{
+	articles, err := s.foremService.GetArticles(ctx, forem.GetArticlesPrams{
 		UserName: username,
 		Page:     page,
 		PerPage:  perPage,
@@ -54,7 +54,7 @@ func (s *Service) GetArticles(ctx context.Context, username string, page, perPag
 	return toModels(articles), nil
 }
 
-func (s *Service) fillBody(ctx context.Context, article *forem2.Article) error {
+func (s *Service) fillBody(ctx context.Context, article *forem.Article) error {
 	fullArticle, err := s.foremService.GetArticleById(ctx, fmt.Sprintf("%d", article.Id))
 	if err != nil {
 		return err
@@ -69,7 +69,7 @@ func (s *Service) fillBody(ctx context.Context, article *forem2.Article) error {
 	return nil
 }
 
-func toModels(articles []forem2.Article) []model.Article {
+func toModels(articles []forem.Article) []model.Article {
 	var result []model.Article
 	for _, article := range articles {
 		result = append(result, toModel(article))
@@ -77,7 +77,7 @@ func toModels(articles []forem2.Article) []model.Article {
 	return result
 }
 
-func toModel(article forem2.Article) model.Article {
+func toModel(article forem.Article) model.Article {
 	return model.Article{
 		Url:          article.Url,
 		Slug:         article.Slug,
@@ -114,7 +114,7 @@ func (s *Service) loadSlugs(ctx context.Context) error {
 	page := 1
 	pageSize := 20
 	for {
-		articles, err := s.foremService.GetArticles(ctx, forem2.GetArticlesPrams{
+		articles, err := s.foremService.GetArticles(ctx, forem.GetArticlesPrams{
 			UserName: *s.username,
 			Page:     page,
 			PerPage:  pageSize,

@@ -2,8 +2,8 @@ package hashnode
 
 import (
 	"context"
-	"github.com/huantt/acc/src/model"
-	hashnodesrv "github.com/huantt/acc/src/pkg/hashnode"
+	"github.com/huantt/acc/model"
+	hashnodesrv "github.com/huantt/acc/pkg/hashnode"
 )
 
 type Service struct {
