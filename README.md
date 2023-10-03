@@ -33,7 +33,7 @@ Flags:
 
 **For example**
 ```shell
-aac collect \
+article-as-code collect \
 --username=jacktt \
 --rps=5 \
 --article-folder=static
@@ -54,7 +54,7 @@ Flags:
 
 **For example**
 ```shell
-aac sync \
+article-as-code sync \
 --article-folder=data/articles \
 --rps=5 \
 --username=jacktt \
