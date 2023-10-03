@@ -22,8 +22,8 @@ func main() {
 	slog.SetDefault(logger)
 
 	root := &cobra.Command{}
-	root.AddCommand(cmd2.CollectArticles("collect-articles"))
-	root.AddCommand(cmd2.SyncArticles("sync-articles"))
+	root.AddCommand(cmd2.CollectArticles("collect"))
+	root.AddCommand(cmd2.SyncArticles("sync"))
 	err := root.Execute()
 	if err != nil {
 		slog.Error(err.Error())
