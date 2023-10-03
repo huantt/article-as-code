@@ -5,8 +5,8 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"github.com/huantt/acc/handler/collector"
-	"github.com/huantt/acc/model"
+	"github.com/huantt/article-as-code/handler/collector"
+	"github.com/huantt/article-as-code/model"
 	"log/slog"
 	"os"
 )

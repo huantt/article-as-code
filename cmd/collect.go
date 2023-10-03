@@ -2,9 +2,9 @@ package cmd
 
 import (
 	"context"
-	"github.com/huantt/acc/handler/collector"
-	"github.com/huantt/acc/impl/forem"
-	foremsrv "github.com/huantt/acc/pkg/forem"
+	"github.com/huantt/article-as-code/handler/collector"
+	"github.com/huantt/article-as-code/impl/forem"
+	foremsrv "github.com/huantt/article-as-code/pkg/forem"
 	"github.com/spf13/cobra"
 	"log/slog"
 )

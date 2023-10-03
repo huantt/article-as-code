@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	cmd2 "github.com/huantt/acc/cmd"
+	cmd2 "github.com/huantt/article-as-code/cmd"
 	"github.com/spf13/cobra"
 	"log/slog"
 	"os"

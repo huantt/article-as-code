@@ -3,7 +3,7 @@ package collector
 import (
 	_ "embed"
 	"encoding/json"
-	"github.com/huantt/acc/model"
+	"github.com/huantt/article-as-code/model"
 	"github.com/stretchr/testify/assert"
 	"testing"
 )

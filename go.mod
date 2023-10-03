@@ -1,4 +1,4 @@
-module github.com/huantt/acc
+module github.com/huantt/article-as-code
 
 go 1.21
 

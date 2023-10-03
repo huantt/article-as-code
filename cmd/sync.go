@@ -2,10 +2,10 @@ package cmd
 
 import (
 	"context"
-	"github.com/huantt/acc/handler/synchronizer"
-	"github.com/huantt/acc/impl/forem"
-	"github.com/huantt/acc/impl/hashnode"
-	forem2 "github.com/huantt/acc/pkg/forem"
+	"github.com/huantt/article-as-code/handler/synchronizer"
+	"github.com/huantt/article-as-code/impl/forem"
+	"github.com/huantt/article-as-code/impl/hashnode"
+	forem2 "github.com/huantt/article-as-code/pkg/forem"
 	"github.com/spf13/cobra"
 )
 

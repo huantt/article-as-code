@@ -5,7 +5,7 @@ import (
 	"errors"
 	"fmt"
 	"github.com/go-resty/resty/v2"
-	"github.com/huantt/acc/model"
+	"github.com/huantt/article-as-code/model"
 	"log/slog"
 	"net/http"
 	"time"
