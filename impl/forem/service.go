@@ -38,6 +38,7 @@ func (s *Service) GetArticles(ctx context.Context, username string, page, perPag
 	if err != nil {
 		return nil, err
 	}
+	slog.Debug(fmt.Sprintf("[Page %d - Page size %d] Found %d articles in list", page, perPage, len(articles)))
 
 	var wg sync.WaitGroup
 	wg.Add(len(articles))
@@ -50,6 +51,9 @@ func (s *Service) GetArticles(ctx context.Context, username string, page, perPag
 		}(i)
 	}
 	wg.Wait()
+	if err != nil {
+		return nil, err
+	}
 
 	return toModels(articles), nil
 }
