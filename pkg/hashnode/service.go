@@ -57,7 +57,7 @@ func (s *Service) SubmitArticle(ctx context.Context, article model.Article) erro
 		return err
 	}
 	if resp.IsError() {
-		return errors.New(fmt.Sprintf("Request: %s - Response code: %d - Response body: %s", resp.Request.URL, resp.StatusCode(), resp.Body()))
+		return fmt.Errorf("Request: %s - Response code: %d - Response body: %s", resp.Request.URL, resp.StatusCode(), resp.Body())
 	}
 	return nil
 }
@@ -80,7 +80,7 @@ func (s *Service) Exists(ctx context.Context, slug, hostname string) (bool, erro
 		return false, err
 	}
 	if resp.IsError() {
-		return false, errors.New(fmt.Sprintf("Request: %s - Response code: %d - Response body: %s", resp.Request.URL, resp.StatusCode(), resp.Body()))
+		return false, fmt.Errorf("Request: %s - Response code: %d - Response body: %s", resp.Request.URL, resp.StatusCode(), resp.Body())
 	}
 	return result.Data.Post != nil, nil
 }

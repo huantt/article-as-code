@@ -89,7 +89,7 @@ func (s *Service) GetArticles(ctx context.Context, params GetArticlesPrams) ([]A
 		return nil, err
 	}
 	if resp.IsError() {
-		return nil, errors.New(fmt.Sprintf("Request: %s - Response code: %d - Response body: %s", resp.Request.URL, resp.StatusCode(), resp.Body()))
+		return nil, fmt.Errorf("Request: %s - Response code: %d - Response body: %s", resp.Request.URL, resp.StatusCode(), resp.Body())
 	}
 	return articles, nil
 }
@@ -106,7 +106,7 @@ func (s *Service) GetArticleById(ctx context.Context, id string) (*Article, erro
 		return nil, err
 	}
 	if resp.IsError() {
-		return nil, errors.New(fmt.Sprintf("Request: %s - Response code: %d - Response body: %s", resp.Request.URL, resp.StatusCode(), resp.Body()))
+		return nil, fmt.Errorf("Request: %s - Response code: %d - Response body: %s", resp.Request.URL, resp.StatusCode(), resp.Body())
 	}
 	return article, nil
 }
@@ -132,7 +132,7 @@ func (s *Service) SubmitArticle(ctx context.Context, article model.Article) erro
 		return err
 	}
 	if resp.IsError() {
-		return errors.New(fmt.Sprintf("Request: %s - Response code: %d - Response body: %s", resp.Request.URL, resp.StatusCode(), resp.Body()))
+		return fmt.Errorf("Request: %s - Response code: %d - Response body: %s", resp.Request.URL, resp.StatusCode(), resp.Body())
 	}
 	return nil
 }
