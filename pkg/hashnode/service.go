@@ -67,7 +67,7 @@ func (s *Service) SubmitArticle(ctx context.Context, article model.Article) erro
 		return fmt.Errorf("Request: %s - Response code: %d - Response body: %s", resp.Request.URL, resp.StatusCode(), resp.Body())
 	}
 	if result.Errors != nil {
-		return fmt.Errorf("%v", result.Errors)
+		return fmt.Errorf("%v", *result.Errors)
 	}
 	return nil
 }
