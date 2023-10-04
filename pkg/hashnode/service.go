@@ -40,6 +40,10 @@ func NewService(APIEndpoint string, authToken string) *Service {
 	return &Service{httpClient}
 }
 
+type SubmitArticleResponse struct {
+	Errors *any `json:"errors"`
+}
+
 func (s *Service) SubmitArticle(ctx context.Context, article model.Article) error {
 	if article.BodyMarkdown == nil {
 		return errors.New("article has no body")
@@ -50,7 +54,10 @@ func (s *Service) SubmitArticle(ctx context.Context, article model.Article) erro
 	requestBody.Variables.Input.CoverImageURL = article.Thumbnail
 	requestBody.Variables.Input.IsPartOfPublication.PublicationId = "649ba336b4f390887392535c"
 	requestBody.Variables.Input.Tags = []Tag{}
+
+	var result SubmitArticleResponse
 	resp, err := s.httpClient.R().SetContext(ctx).
+		SetResult(&result).
 		SetBody(requestBody).
 		Post("")
 	if err != nil {
@@ -58,6 +65,9 @@ func (s *Service) SubmitArticle(ctx context.Context, article model.Article) erro
 	}
 	if resp.IsError() {
 		return fmt.Errorf("Request: %s - Response code: %d - Response body: %s", resp.Request.URL, resp.StatusCode(), resp.Body())
+	}
+	if result.Errors != nil {
+		return fmt.Errorf("%v", result.Errors)
 	}
 	return nil
 }
